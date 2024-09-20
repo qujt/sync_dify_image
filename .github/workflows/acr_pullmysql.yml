@@ -1,4 +1,4 @@
-name: Sync Docker Images to Alibaba Cloud from Docker Compose
+name: pullmysql
 
 on:
   push:
@@ -17,9 +17,9 @@ jobs:
 
     - name: Pull and push images to Alibaba Cloud ACR
       run: |
-        image=mysql/mysql-server:5.6.35
+        image=mysql/mysql:5.6.34
         docker pull $image
-        acr_image="${{ secrets.ACR_REGISTRY }}/qujtdocker/mysql-server:5.6.35"
+        acr_image="${{ secrets.ACR_REGISTRY }}/qujtdocker/mysql:5.6.34"
         docker tag $image $acr_image
         docker rmi $image
         echo "Pushing image to ACR: $acr_image"
