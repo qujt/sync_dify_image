@@ -1,0 +1,27 @@
+name: Sync Docker Images to Alibaba Cloud from Docker Compose
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  sync-images:
+    runs-on: ubuntu-latest
+
+    steps:
+  
+
+    - name: Log in to Alibaba Cloud ACR
+      run: echo "${{ secrets.ACR_PASSWORD }}" | docker login ${{ secrets.ACR_REGISTRY }} --username ${{ secrets.ACR_USERNAME }} --password-stdin
+
+    - name: Pull and push images to Alibaba Cloud ACR
+      run: |
+        image=mysql/mysql-server:5.6.35
+        docker pull $image
+        acr_image="${{ secrets.ACR_REGISTRY }}/qujtdocker/mysql-server:5.6.35"
+        docker tag $image $acr_image
+        docker rmi $image
+        echo "Pushing image to ACR: $acr_image"
+        docker push $acr_image
+        docker rmi $acr_image
