@@ -1,4 +1,4 @@
-name: pullopenresty
+name: pullopenresty1
 
 on:
   push:
