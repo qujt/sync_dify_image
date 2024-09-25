@@ -1,0 +1,27 @@
+name: pullzerotier
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  sync-images:
+    runs-on: ubuntu-latest
+
+    steps:
+  
+
+    - name: Log in to Alibaba Cloud ACR
+      run: echo "${{ secrets.ACR_PASSWORD }}" | docker login ${{ secrets.ACR_REGISTRY }} --username ${{ secrets.ACR_USERNAME }} --password-stdin
+
+    - name: Pull and push images to Alibaba Cloud ACR
+      run: |
+        image=zerotier/zerotier-synology:latest
+        docker pull $image
+        acr_image="${{ secrets.ACR_REGISTRY }}/qujtdocker/zerotier-synology:latest"
+        docker tag $image $acr_image
+        docker rmi $image
+        echo "Pushing image to ACR: $acr_image"
+        docker push $acr_image
+        docker rmi $acr_image
