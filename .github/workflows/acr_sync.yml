@@ -1,4 +1,4 @@
-name: Sync Docker Images to Alibaba Cloud from Docker Compose
+name: Sync Docker Images to Alibaba Cloud from Docker Compose run
 
 on:
   push:
