@@ -17,9 +17,9 @@ jobs:
 
     - name: Pull and push images to Alibaba Cloud ACR
       run: |
-        image=rancher/rancher:v2.5.12
+        image=rancher/rancher:v2.5.17
         docker pull $image
-        acr_image="${{ secrets.ACR_REGISTRY }}/qujtdocker/rancher:v2.5.12"
+        acr_image="${{ secrets.ACR_REGISTRY }}/qujtdocker/rancher:v2.5.17"
         docker tag $image $acr_image
         docker rmi $image
         echo "Pushing image to ACR: $acr_image"
