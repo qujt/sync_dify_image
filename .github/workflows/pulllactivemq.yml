@@ -17,9 +17,9 @@ jobs:
 
     - name: Pull and push images to Alibaba Cloud ACR
       run: |
-        image=islandora/activemq:3
+        image=islandora/activemq
         docker pull $image
-        acr_image="${{ secrets.ACR_REGISTRY }}/qujtdocker/activemq:3"
+        acr_image="${{ secrets.ACR_REGISTRY }}/qujtdocker/activemq"
         docker tag $image $acr_image
         docker rmi $image
         echo "Pushing image to ACR: $acr_image"
