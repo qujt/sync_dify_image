@@ -1,6 +1,6 @@
 # sync_dify_image
 
-## 功能
+## 功能 
 
 - 从 Docker Hub 拉取镜像
 - 将镜像推送到阿里云 ACR
