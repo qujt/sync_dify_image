@@ -17,9 +17,9 @@ jobs:
 
     - name: Pull and push images to Alibaba Cloud ACR
       run: |
-        image=quay.io/go-skynet/local-ai:latest-nvidia-l4t-arm64-cuda-13
+        image=localai/localai:latest-aio-gpu-nvidia-cuda-12
         docker pull $image
-        acr_image="${{ secrets.ACR_REGISTRY }}/qujtdocker/local-ai:latest-nvidia-l4t-arm64-cuda-13"
+        acr_image="${{ secrets.ACR_REGISTRY }}/qujtdocker/local-ai:latest-aio-gpu-nvidia-cuda-12"
         docker tag $image $acr_image
         docker rmi $image
         echo "Pushing image to ACR: $acr_image"
