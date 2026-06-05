@@ -17,9 +17,9 @@ jobs:
 
     - name: Pull and push images to Alibaba Cloud ACR
       run: |
-        image=apache/skywalking-ui:10.1.0
+        image=apache/skywalking-ui:10.4.0
         docker pull $image
-        acr_image="${{ secrets.ACR_REGISTRY }}/qujtdocker/skywalking-ui:10.1.0"
+        acr_image="${{ secrets.ACR_REGISTRY }}/qujtdocker/skywalking-ui:10.4.0"
         docker tag $image $acr_image
         docker rmi $image
         echo "Pushing image to ACR: $acr_image"
