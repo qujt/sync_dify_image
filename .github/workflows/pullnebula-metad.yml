@@ -1,4 +1,4 @@
-name: pullnebula-graphd
+name: pullnebula-console
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  pullnebula-graphd:
+  pullnebula-console:
     runs-on: ubuntu-latest
 
     steps:
@@ -19,13 +19,16 @@ jobs:
       run: |
         # image=vesoft/nebula-metad:v3.8.0
         # image=vesoft/nebula-storaged:v3.8.0
-        image=vesoft/nebula-graphd:v3.8.0
+        #image=vesoft/nebula-graphd:v3.8.0
+        image=vesoft/nebula-console:v3.8.0
         docker pull $image
         #acr_image="${{ secrets.ACR_REGISTRY }}/qujtdocker/nebula-metad:v3.8.0"
         #acr_image="${{ secrets.ACR_REGISTRY }}/qujtdocker/nebula-storaged:v3.8.0"
-        acr_image="${{ secrets.ACR_REGISTRY }}/qujtdocker/nebula-graphd:v3.8.0"
+        #acr_image="${{ secrets.ACR_REGISTRY }}/qujtdocker/nebula-graphd:v3.8.0"
+        acr_image="${{ secrets.ACR_REGISTRY }}/qujtdocker/nebula-console:v3.8.0"
         docker tag $image $acr_image
         docker rmi $image
         echo "Pushing image to ACR: $acr_image"
         docker push $acr_image
         docker rmi $acr_image
+
