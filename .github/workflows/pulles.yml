@@ -17,9 +17,9 @@ jobs:
 
     - name: Pull and push images to Alibaba Cloud ACR
       run: |
-        image=elasticsearch:7.17.27
+        image=elasticsearch:8.19.18
         docker pull $image
-        acr_image="${{ secrets.ACR_REGISTRY }}/qujtdocker/elasticsearch:7.17.27"
+        acr_image="${{ secrets.ACR_REGISTRY }}/qujtdocker/elasticsearch:8.19.18"
         docker tag $image $acr_image
         docker rmi $image
         echo "Pushing image to ACR: $acr_image"
