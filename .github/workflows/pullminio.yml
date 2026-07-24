@@ -19,7 +19,7 @@ jobs:
       run: |
         image=minio/minio:RELEASE.2025-09-07T16-13-09Z
         docker pull $image
-        acr_image="${{ secrets.ACR_REGISTRY }}/qujtdocker/minio/minio:RELEASE.2025-09-07T16-13-09Z"
+        acr_image="${{ secrets.ACR_REGISTRY }}/qujtdocker/minio:RELEASE.2025-09-07T16-13-09Z"
         docker tag $image $acr_image
         docker rmi $image
         echo "Pushing image to ACR: $acr_image"
