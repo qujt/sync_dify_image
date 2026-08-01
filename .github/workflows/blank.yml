@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  pulllactivemq1:
+  pullopensearch:
     runs-on: ubuntu-latest
 
     steps:
