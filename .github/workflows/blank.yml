@@ -19,7 +19,7 @@ jobs:
       run: |
         image=opensearchproject/opensearch:3
         docker pull $image
-        acr_image="${{ secrets.ACR_REGISTRY }}/qujtdocker/opensearch:3
+        acr_image="${{ secrets.ACR_REGISTRY }}/qujtdocker/opensearch:3”
         docker tag $image $acr_image
         docker rmi $image
         echo "Pushing image to ACR: $acr_image"
